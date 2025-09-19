@@ -1,0 +1,14 @@
+{
+  "name": "@fair-crop/repo",
+  "version": "dev",
+  "private": true,
+  "scripts": {
+    "fmt": "prettier . --write"
+  },
+  "keywords": [],
+  "author": "",
+  "packageManager": "pnpm@10.12.1",
+  "devDependencies": {
+    "prettier": "^3.6.2"
+  }
+}
