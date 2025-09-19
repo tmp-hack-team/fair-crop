@@ -7,12 +7,6 @@ settings:
 importers:
 
   .:
-    devDependencies:
-      prettier:
-        specifier: ^3.6.2
-        version: 3.6.2
-
-  src:
     dependencies:
       class-variance-authority:
         specifier: ^0.7.1
