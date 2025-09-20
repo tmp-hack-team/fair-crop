@@ -1,3 +1,4 @@
+import { redirect } from "react-router";
 import type { Route } from "./+types/hello";
 
 export function meta({}: Route.MetaArgs) {
@@ -12,7 +13,7 @@ export function meta({}: Route.MetaArgs) {
 }
 
 export async function loader({ context }: Route.LoaderArgs) {
-  return {};
+  throw redirect("/csa/about");
 }
 
 export default function Home({ loaderData }: Route.ComponentProps) {
