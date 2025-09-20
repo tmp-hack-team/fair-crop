@@ -637,6 +637,7 @@ export function FarmMap({
           for (let x = l.x; x < l.x + l.w; x += meta.w || 1) {
             let posIdx = twister.randBetween(0, meta.pos.length - 1);
 
+            // @ts-ignore
             if (count == l.maxCount) {
               //continue objLoop;
             }
@@ -649,6 +650,7 @@ export function FarmMap({
                   y: meta.pos[posIdx][1] + yy,
                 });
 
+                // @ts-ignore
                 if (l.total && l.user && count >= l.user && count < l.total) {
                   map[y + yy][x + xx].layers.unshift({
                     sprite: "/sprites/highlight-total.svg",
@@ -657,6 +659,7 @@ export function FarmMap({
                   });
                 }
 
+                // @ts-ignore
                 if (l.user && l.total && count < l.user) {
                   map[y + yy][x + xx].layers.unshift({
                     sprite: "/sprites/highlight-user.svg",
