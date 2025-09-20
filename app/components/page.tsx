@@ -17,6 +17,7 @@ import {
 import { Outlet } from "react-router";
 import React from "react";
 import { TypographyLead, TypographyP } from "./ui/typography";
+import { cn } from "~/lib/utils";
 
 export function Page({
   children,
@@ -28,7 +29,7 @@ export function Page({
   controls?: Array<ReactNode>;
 }) {
   return (
-    <>
+    <div className={cn("h-full max-h-full grow-0 flex flex-col")}>
       <header className="flex h-18 shrink-0 items-center gap-2 transition-[width,height] ease-linear border-b-1 border-sidebar-border bg-header">
         <div className="flex w-full items-center gap-1 px-4 lg:gap-2 lg:px-6">
           <SidebarTrigger className="-ml-1" />
@@ -44,10 +45,10 @@ export function Page({
           </div>
         </div>
       </header>
-      <div className="flex flex-1 flex-col items-start gap-4 p-4 pt-4 text-sm">
+      <div className="flex flex-1 flex-col items-start gap-4 p-4 pt-4 text-sm overflow-auto">
         {children}
       </div>
-    </>
+    </div>
   );
 }
 

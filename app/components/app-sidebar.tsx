@@ -63,10 +63,10 @@ const data = {
         },
       ],
     },
-    {
+    /*{
       title: "Administration",
       items: [{ title: "Dashboard", url: "/dashboard", icon: Gauge }],
-    },
+    },*/
     /*{
       title: "Models",
       url: "#",

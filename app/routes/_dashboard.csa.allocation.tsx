@@ -9,7 +9,7 @@ export default function () {
   const [isEditing, setEditing] = useState(false);
 
   return (
-    <Page title="Allocation">
+    <Page title="Current Allocation">
       <p>
         This schematic is a representation of the production allocated for the
         current season by all CSA subscribers.
