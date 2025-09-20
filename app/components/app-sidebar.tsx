@@ -62,7 +62,7 @@ const data = {
       title: "Subscription",
       items: [
         {
-          title: "Your Subscription",
+          title: "Schedule",
           url: "/csa/subscription",
           icon: HandCoins,
         },
