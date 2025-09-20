@@ -1,0 +1,22 @@
+{
+  "cow": {
+    "total": 10,
+    "user": 3
+  },
+  "chicken": {
+    "total": 14,
+    "user": 2
+  },
+  "greens": {
+    "total": 20,
+    "user": 5
+  },
+  "veggies": {
+    "total": 25,
+    "user": 3
+  },
+  "fruit": {
+    "total": 25,
+    "user": 3
+  }
+}
