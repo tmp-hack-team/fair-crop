@@ -25,14 +25,14 @@ export function FarmMapLegend({
     <div className={cn("flex flex-col w-fit", className)}>
       <div
         className={cn(
-          "border-1 border-b-0 border-border text-table-header-fg bg-table-header p-2 font-semibold"
+          "border-1 border-b-0 border-border text-table-header-fg bg-table-header p-2 font-semibold rounded-t-sm"
         )}
       >
         Summary
       </div>
       <div
         className={cn(
-          "border-1 border-border bg-infocard grid gap-x-2 grid-cols-[auto_auto_auto_1fr] items-center"
+          "border-1 border-border bg-infocard grid gap-x-2 grid-cols-[auto_auto_auto_1fr] items-center rounded-b-sm"
         )}
       >
         {LEGEND.map(([k, legend]) => (
