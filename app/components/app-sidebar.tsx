@@ -28,9 +28,12 @@ import {
   SidebarContent,
   SidebarFooter,
   SidebarHeader,
+  SidebarMenuButton,
   SidebarRail,
+  SidebarSeparator,
 } from "~/components/ui/sidebar";
 import { cn } from "~/lib/utils";
+import { Link } from "react-router";
 
 // This is sample data.
 const data = {
@@ -153,8 +156,11 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   return (
     <Sidebar collapsible="icon" {...props}>
       <SidebarHeader>
-        <img src="/assets/logo.svg" className={cn("pr-4")} />
+        <Link to={"/"}>
+          <img src="/assets/logo.svg" className={cn("w-full p-4")} />
+        </Link>
       </SidebarHeader>
+      <SidebarSeparator />
       <SidebarContent>
         <NavMain groups={data.navMain} />
         {/* <NavProjects projects={data.projects} /> */}

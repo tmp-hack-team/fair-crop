@@ -11,7 +11,7 @@ export default function () {
   return (
     <Page title="Allocation">
       <p>
-        The following map is a visualization of the production allocated for the
+        This schematic is a representation of the production allocated for the
         current season by all CSA subscribers.
       </p>
       <p>

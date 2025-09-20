@@ -732,8 +732,8 @@ export function FarmMap({
   }, [config]);
 
   return (
-    <div>
-      <table>
+    <div className={cn("w-full overflow-auto")}>
+      <table className={cn("w-max overflow-auto")}>
         <tbody>
           {layout.map((row, y) => (
             <tr key={y}>
