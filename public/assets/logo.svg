@@ -2,14 +2,16 @@
 <!-- Created with Inkscape (http://www.inkscape.org/) -->
 
 <svg
-   width="441.53336"
-   height="48.000031"
-   viewBox="0 0 116.82236 12.700008"
+   width="570.53326"
+   height="48.0667"
+   viewBox="0 0 150.95358 12.717648"
    version="1.1"
    id="svg5"
    inkscape:export-filename="logo.png"
    inkscape:export-xdpi="320.17548"
    inkscape:export-ydpi="320.17548"
+   sodipodi:docname="logo.svg"
+   inkscape:version="1.2.2 (b0a84865, 2022-12-01)"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns="http://www.w3.org/2000/svg"
@@ -26,11 +28,11 @@
      inkscape:document-units="mm"
      showgrid="false"
      inkscape:zoom="1.5280664"
-     inkscape:cx="188.8007"
+     inkscape:cx="253.58846"
      inkscape:cy="84.747626"
-     inkscape:window-width="1755"
+     inkscape:window-width="1753"
      inkscape:window-height="1097"
-     inkscape:window-x="45"
+     inkscape:window-x="47"
      inkscape:window-y="44"
      inkscape:window-maximized="1"
      inkscape:current-layer="layer1" />
@@ -40,7 +42,7 @@
      inkscape:label="Layer 1"
      inkscape:groupmode="layer"
      id="layer1"
-     transform="translate(-11.406474,-6.9696704)">
+     transform="translate(5.4386408,-6.9696704)">
     <text
        xml:space="preserve"
        style="font-weight:bold;font-size:17.6389px;font-family:Arial;-inkscape-font-specification:'Arial Bold';text-align:center;text-anchor:middle;fill:#025100;fill-opacity:1;stroke-width:2"
@@ -53,6 +55,6 @@
          x="69.376678"
          y="19.49329">F<tspan
    style="fill:#006a00;fill-opacity:1"
-   id="tspan6644">AI</tspan>RCROP</tspan></text>
+   id="tspan6644">AI</tspan>RCROP.PT</tspan></text>
   </g>
 </svg>

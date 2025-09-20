@@ -153,7 +153,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   return (
     <Sidebar collapsible="icon" {...props}>
       <SidebarHeader>
-        <img src="/assets/logo.svg" className={cn("h-4")} />
+        <img src="/assets/logo.svg" className={cn("pr-4")} />
       </SidebarHeader>
       <SidebarContent>
         <NavMain groups={data.navMain} />
