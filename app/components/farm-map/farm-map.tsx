@@ -2,6 +2,8 @@ import { useInterval } from "@dnd-kit/utilities";
 import { useEffect, useMemo, useRef } from "react";
 import { MersenneTwister } from "~/lib/mersenne-twister";
 import { cn } from "~/lib/utils";
+import { FarmMapLegend } from "./farm-map-legend";
+import { InfoCard } from "../ui/info";
 
 type Config = {
   mapSize: {
@@ -469,16 +471,21 @@ function getTilePosKey({
 
 export function FarmMap({
   allocation,
+  withLegend,
+  withInfo,
 }: {
   allocation: {
-    [k in "cow" | "chicken" | "greens" | "veggies" | "fruit"]: {
+    [k: string]: {
       total: number;
       user?: number;
     };
   };
+  withLegend?: boolean;
+  withInfo?: boolean;
 }) {
+  console.log({ allocation });
   const config = {
-    mapSize: { w: 42, h: 36 },
+    mapSize: { w: 41, h: 36 },
     layers: [
       {
         tile: "grassHill",
@@ -732,7 +739,20 @@ export function FarmMap({
   }, [config]);
 
   return (
-    <div className={cn("w-full overflow-auto shrink-0")}>
+    <div className={cn("overflow-auto shrink-0 flex flex-col w-min")}>
+      {withInfo && (
+        <InfoCard className={cn("mx-1 mb-4")}>
+          <p>
+            This schematic is a representation of the production allocated for
+            the current season by all CSA subscribers.
+          </p>
+          <p>
+            The resources currently allocated by your subscription are
+            highlighted in pulsing blue.
+          </p>
+        </InfoCard>
+      )}
+
       <table className={cn("w-max overflow-auto")}>
         <tbody>
           {layout.map((row, y) => (
@@ -757,6 +777,8 @@ export function FarmMap({
           ))}
         </tbody>
       </table>
+
+      {withLegend && <FarmMapLegend className={cn("px-1 mt-4")} />}
     </div>
   );
 }

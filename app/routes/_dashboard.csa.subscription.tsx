@@ -1,8 +1,9 @@
 import { useState } from "react";
 import { FarmMap } from "~/components/farm-map/farm-map";
+import { mergeMapData } from "~/components/farm-map/util";
 import { Page, PageHeaderButton } from "~/components/page";
 
-import data from "~/data/allocation.json";
+import data from "~/data/data";
 
 export default function () {
   const [isEditing, setEditing] = useState(false);
@@ -16,7 +17,9 @@ export default function () {
         </PageHeaderButton>,
       ]}
     >
-      <FarmMap allocation={data.allocation} />
+      <FarmMap
+        allocation={mergeMapData(data.allocations.total, data.allocations.user)}
+      />
     </Page>
   );
 }

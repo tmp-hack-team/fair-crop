@@ -2,31 +2,31 @@ import { cn } from "~/lib/utils";
 import { MapLegendIcon } from "./farm-map";
 
 const LEGEND = [
-  ["cow", "1 weekly dairy basket"],
-  ["chicken", "1 weekly poultry basket"],
-  ["fruit", "1 weekly seasonal fruit basket"],
-  ["greens", "1 weekly seasonal greens basket"],
-  ["veggies", "1 weekly seasonal vegetables basket"],
+  ["cow", "Dairy basket"],
+  ["chicken", "Poultry basket"],
+  ["fruit", "Seasonal fruit basket"],
+  ["greens", "Seasonal greens basket"],
+  ["veggies", "Seasonal vegetables basket"],
 ];
 
-export function FarmMapLegend() {
+export function FarmMapLegend({ className }: { className?: string }) {
   return (
-    <div>
+    <div className={cn("flex flex-col w-full", className)}>
       <div
         className={cn(
           "border-1 border-b-0 border-border text-table-header-fg bg-table-header p-2 font-semibold"
         )}
       >
-        Legend
+        Legend (weekly delivery)
       </div>
-      <div
-        className={cn(
-          "border-1 border-border bg-accent p-2 pr-4 pb-4 flex flex-col gap-y-3"
-        )}
-      >
+      <div className={cn("border-1 border-border bg-accent flex flex-col")}>
         {LEGEND.map(([k, legend]) => (
-          <div className={cn("flex items-end gap-x-2 gap-y-4 h-8")}>
-            <div className={cn("w-9 text-right")}>
+          <div
+            className={cn(
+              "flex items-center gap-x-2 gap-y-4 h-10 border-border border-b-1 pl-1"
+            )}
+          >
+            <div className={cn("w-11 text-right")}>
               <MapLegendIcon icon={k} className={cn("m-auto")} />
             </div>
             <div>{legend}</div>

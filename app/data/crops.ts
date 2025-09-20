@@ -20,7 +20,7 @@ const crops: {
         seasonal: true;
 
         zones: {
-          [zoneId: number]: {
+          [zoneId: string]: {
             start: number;
             end: number;
           };
