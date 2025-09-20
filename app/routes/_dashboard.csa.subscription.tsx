@@ -28,7 +28,7 @@ import {
 } from "~/components/ui/table";
 import { TypographyH2, TypographyH3 } from "~/components/ui/typography";
 
-import crops from "~/data/crops";
+import products from "~/data/products";
 import data from "~/data/data";
 import { cn } from "~/lib/utils";
 
@@ -83,7 +83,7 @@ function getMonthName(month: number) {
 }
 
 function MonthCard({ month }: { month: number }) {
-  const monthCrops = Object.entries(crops).filter(([k, v]) => {
+  const monthCrops = Object.entries(products).filter(([k, v]) => {
     if (!v.seasonal) return true;
     if (v.seasonal) {
       const userZoneCrop = v.zones[data.user.zone];

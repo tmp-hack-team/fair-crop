@@ -47,7 +47,7 @@ const data = {
       title: "Production",
       items: [
         {
-          title: "About CSA",
+          title: "About Us",
           url: "/csa/about",
           icon: MessageCircleQuestionMark,
         },

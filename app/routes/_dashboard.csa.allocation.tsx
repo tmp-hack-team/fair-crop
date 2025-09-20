@@ -26,11 +26,11 @@ export default function () {
           </p>
           <p>
             The resources currently allocated by other subscribers are
-            highlighted <span className="bg-green-300">green</span>.
+            highlighted <span className="bg-green-200">green</span>.
           </p>
           <p>
             The resources currently allocated by your subscription are
-            highlighted in <span className="bg-blue-300">pulsing blue</span>.
+            highlighted in <span className="bg-blue-200">pulsing blue</span>.
           </p>
           <p>The remaining resources are currently unalocated.</p>
         </InfoCard>

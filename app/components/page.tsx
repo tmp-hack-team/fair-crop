@@ -23,10 +23,12 @@ export function Page({
   children,
   title,
   controls,
+  className,
 }: {
   children: ReactNode;
   title: ReactNode;
   controls?: Array<ReactNode>;
+  className?: string;
 }) {
   return (
     <div
@@ -47,7 +49,12 @@ export function Page({
           </div>
         </div>
       </header>
-      <div className="flex flex-1 flex-col items-start gap-4 p-4 pt-4 text-sm overflow-auto">
+      <div
+        className={cn(
+          "flex flex-1 flex-col items-start gap-4 p-4 pt-4 text-sm overflow-auto",
+          className
+        )}
+      >
         {children}
       </div>
     </div>
