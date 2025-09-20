@@ -38,16 +38,16 @@ import { Link } from "react-router";
 // This is sample data.
 const data = {
   user: {
-    name: "Greta T.",
+    name: "",
     email: "greta@bob.com",
     avatar: "/avatars/greta.jpg",
   },
   navMain: [
     {
-      title: "Community Support Agriculture",
+      title: "Production",
       items: [
         {
-          title: "About",
+          title: "About CSA",
           url: "/csa/about",
           icon: MessageCircleQuestionMark,
         },
@@ -56,8 +56,13 @@ const data = {
           url: "/csa/allocation",
           icon: LandPlot,
         },
+      ],
+    },
+    {
+      title: "Subscription",
+      items: [
         {
-          title: "My Subscription",
+          title: "Your Subscription",
           url: "/csa/subscription",
           icon: HandCoins,
         },

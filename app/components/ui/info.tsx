@@ -19,3 +19,32 @@ export function InfoCard({
     </div>
   );
 }
+
+export function DataCard({
+  title,
+  children,
+  className,
+}: {
+  title: string;
+  children: ReactNode;
+  className?: string;
+}) {
+  return (
+    <div className={cn("flex flex-col w-full", className)}>
+      <div
+        className={cn(
+          "border-1 border-b-0 border-border text-table-header-fg bg-table-header p-2 font-semibold"
+        )}
+      >
+        {title}
+      </div>
+      <div
+        className={cn(
+          "border-1 border-border bg-accent flex-col items-center p-2"
+        )}
+      >
+        {children}
+      </div>
+    </div>
+  );
+}

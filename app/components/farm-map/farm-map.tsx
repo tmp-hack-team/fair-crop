@@ -739,46 +739,29 @@ export function FarmMap({
   }, [config]);
 
   return (
-    <div className={cn("overflow-auto shrink-0 flex flex-col w-min")}>
-      {withInfo && (
-        <InfoCard className={cn("mx-1 mb-4")}>
-          <p>
-            This schematic is a representation of the production allocated for
-            the current season by all CSA subscribers.
-          </p>
-          <p>
-            The resources currently allocated by your subscription are
-            highlighted in pulsing blue.
-          </p>
-        </InfoCard>
-      )}
-
-      <table className={cn("w-max overflow-auto")}>
-        <tbody>
-          {layout.map((row, y) => (
-            <tr key={y}>
-              {row.map((tile, x) => (
-                <td
-                  style={{
-                    height: `${TILE_SIZE}px`,
-                    width: `${TILE_SIZE}px`,
-                    imageRendering: "pixelated",
-                    backgroundImage: `${tile.layers
-                      .map((l) => `url('${l.sprite}')`)
-                      .join(",")}`,
-                    backgroundPosition: `${tile.layers
-                      .map((l) => `-${l.x * TILE_SIZE}px -${l.y * TILE_SIZE}px`)
-                      .join(",")}`,
-                    fontSize: "5px",
-                  }}
-                ></td>
-              ))}
-            </tr>
-          ))}
-        </tbody>
-      </table>
-
-      {withLegend && <FarmMapLegend className={cn("px-1 mt-4")} />}
-    </div>
+    <table className={cn("w-max overflow-auto")}>
+      <tbody>
+        {layout.map((row, y) => (
+          <tr key={y}>
+            {row.map((tile, x) => (
+              <td
+                style={{
+                  height: `${TILE_SIZE}px`,
+                  width: `${TILE_SIZE}px`,
+                  imageRendering: "pixelated",
+                  backgroundImage: `${tile.layers
+                    .map((l) => `url('${l.sprite}')`)
+                    .join(",")}`,
+                  backgroundPosition: `${tile.layers
+                    .map((l) => `-${l.x * TILE_SIZE}px -${l.y * TILE_SIZE}px`)
+                    .join(",")}`,
+                  fontSize: "5px",
+                }}
+              ></td>
+            ))}
+          </tr>
+        ))}
+      </tbody>
+    </table>
   );
 }

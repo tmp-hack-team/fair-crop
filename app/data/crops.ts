@@ -12,7 +12,7 @@ const crops: {
         sugarsGrams: number;
       };
       proteinGrams: number;
-      sodiumGrams: number;
+      sodiumMilligrams: number;
       fiberGrams: number;
     };
   } & (
@@ -31,10 +31,10 @@ const crops: {
       }
   );
 } = {
-  garlic: {
+  Garlic: {
     seasonal: true,
     zones: {
-      2: { start: 1, end: 5 },
+      "2": { start: 1, end: 5 },
     },
     type: "vegetable",
     nutrition: {
@@ -43,10 +43,10 @@ const crops: {
       carbohydrate: { totalGrams: 33, sugarsGrams: 1 },
       proteinGrams: 6.4,
       fiberGrams: 2.1,
-      sodiumGrams: 17,
+      sodiumMilligrams: 17,
     },
   },
-  lettuce: {
+  Lettuce: {
     seasonal: false,
     type: "vegetable",
     nutrition: {
@@ -55,13 +55,13 @@ const crops: {
       carbohydrate: { totalGrams: 2.9, sugarsGrams: 0.8 },
       proteinGrams: 1.4,
       fiberGrams: 1.3,
-      sodiumGrams: 28,
+      sodiumMilligrams: 28,
     },
   },
-  potato: {
+  Potato: {
     seasonal: true,
     zones: {
-      2: { start: 6, end: 8 },
+      "2": { start: 6, end: 8 },
     },
     type: "vegetable",
     nutrition: {
@@ -70,10 +70,10 @@ const crops: {
       carbohydrate: { totalGrams: 17.5, sugarsGrams: 0.8 },
       proteinGrams: 2.0,
       fiberGrams: 2.2,
-      sodiumGrams: 7,
+      sodiumMilligrams: 7,
     },
   },
-  beetroot: {
+  Beetroot: {
     seasonal: false,
     type: "vegetable",
     nutrition: {
@@ -82,13 +82,13 @@ const crops: {
       carbohydrate: { totalGrams: 9.6, sugarsGrams: 6.8 },
       proteinGrams: 1.6,
       fiberGrams: 2.8,
-      sodiumGrams: 78,
+      sodiumMilligrams: 78,
     },
   },
-  broccoli: {
+  Broccoli: {
     seasonal: true,
     zones: {
-      2: { start: 12, end: 4 },
+      "2": { start: 12, end: 4 },
     },
     type: "vegetable",
     nutrition: {
@@ -97,10 +97,10 @@ const crops: {
       carbohydrate: { totalGrams: 7.0, sugarsGrams: 1.7 },
       proteinGrams: 2.8,
       fiberGrams: 2.6,
-      sodiumGrams: 33,
+      sodiumMilligrams: 33,
     },
   },
-  cabbage: {
+  Cabbage: {
     seasonal: false,
     type: "vegetable",
     nutrition: {
@@ -109,13 +109,13 @@ const crops: {
       carbohydrate: { totalGrams: 6.0, sugarsGrams: 1.5 },
       proteinGrams: 3.0,
       fiberGrams: 3.0,
-      sodiumGrams: 25,
+      sodiumMilligrams: 25,
     },
   },
-  tomato: {
+  Tomato: {
     seasonal: true,
     zones: {
-      2: { start: 6, end: 10 },
+      "2": { start: 6, end: 10 },
     },
     type: "fruit",
     nutrition: {
@@ -124,13 +124,13 @@ const crops: {
       carbohydrate: { totalGrams: 3.9, sugarsGrams: 2.6 },
       proteinGrams: 0.9,
       fiberGrams: 1.2,
-      sodiumGrams: 5,
+      sodiumMilligrams: 5,
     },
   },
-  strawberry: {
+  Strawberry: {
     seasonal: true,
     zones: {
-      2: { start: 3, end: 7 },
+      "2": { start: 3, end: 7 },
     },
     type: "fruit",
     nutrition: {
@@ -139,13 +139,13 @@ const crops: {
       carbohydrate: { totalGrams: 7.7, sugarsGrams: 4.9 },
       proteinGrams: 0.8,
       fiberGrams: 2.0,
-      sodiumGrams: 1,
+      sodiumMilligrams: 1,
     },
   },
-  melon: {
+  Melon: {
     seasonal: true,
     zones: {
-      2: { start: 6, end: 7 },
+      "2": { start: 6, end: 7 },
     },
     type: "fruit",
     nutrition: {
@@ -154,13 +154,13 @@ const crops: {
       carbohydrate: { totalGrams: 8.0, sugarsGrams: 8.0 },
       proteinGrams: 0.8,
       fiberGrams: 0.9,
-      sodiumGrams: 16,
+      sodiumMilligrams: 16,
     },
   },
-  basil: {
+  Basil: {
     seasonal: true,
     zones: {
-      2: { start: 6, end: 10 },
+      "2": { start: 6, end: 10 },
     },
     type: "vegetable",
     nutrition: {
@@ -169,13 +169,13 @@ const crops: {
       carbohydrate: { totalGrams: 2.7, sugarsGrams: 0.3 },
       proteinGrams: 3.2,
       fiberGrams: 1.6,
-      sodiumGrams: 4,
+      sodiumMilligrams: 4,
     },
   },
-  watermelon: {
+  Watermelon: {
     seasonal: true,
     zones: {
-      2: { start: 6, end: 10 },
+      "2": { start: 6, end: 10 },
     },
     type: "fruit",
     nutrition: {
@@ -184,10 +184,10 @@ const crops: {
       carbohydrate: { totalGrams: 7.6, sugarsGrams: 6.2 },
       proteinGrams: 0.6,
       fiberGrams: 0.4,
-      sodiumGrams: 1,
+      sodiumMilligrams: 1,
     },
   },
-  carrot: {
+  Carrot: {
     seasonal: false,
     type: "vegetable",
     nutrition: {
@@ -196,7 +196,7 @@ const crops: {
       carbohydrate: { totalGrams: 10.0, sugarsGrams: 4.7 },
       proteinGrams: 0.9,
       fiberGrams: 2.8,
-      sodiumGrams: 69,
+      sodiumMilligrams: 69,
     },
   },
 };
