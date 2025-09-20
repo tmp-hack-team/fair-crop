@@ -66,7 +66,7 @@ export default function () {
 
   return (
     <Page
-      title="Subscription & Schedule"
+      title="Your Subscription"
       /*controls={[
         <PageHeaderButton onClick={() => setEditing((prev) => !prev)}>
           {isEditing ? "Save" : "Edit"}
