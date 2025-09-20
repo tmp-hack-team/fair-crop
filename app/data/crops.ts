@@ -1,5 +1,5 @@
 export type ProductInfo = {
-  type: "vegetable" | "fruit" | "meat";
+  type: "vegetable" | "fruit" | "meat" | "chicken" | "pig" | "cow";
   nutrition: {
     energyKcal: number;
     fat: {
@@ -200,6 +200,30 @@ const crops: {
       proteinGrams: 0.9,
       fiberGrams: 2.8,
       sodiumMilligrams: 69,
+    },
+  },
+  Eggs: {
+    seasonal: false,
+    type: "chicken",
+    nutrition: {
+      energyKcal: 155,
+      fat: { totalGrams: 11.0, saturatesGrams: 3.3 },
+      carbohydrate: { totalGrams: 1.1, sugarsGrams: 1.1 },
+      proteinGrams: 13.0,
+      fiberGrams: 0.0,
+      sodiumMilligrams: 124,
+    },
+  },
+  Milk: {
+    seasonal: false,
+    type: "cow",
+    nutrition: {
+      energyKcal: 61,
+      fat: { totalGrams: 3.3, saturatesGrams: 1.9 },
+      carbohydrate: { totalGrams: 4.8, sugarsGrams: 5.1 },
+      proteinGrams: 3.2,
+      fiberGrams: 0.0,
+      sodiumMilligrams: 44,
     },
   },
 };

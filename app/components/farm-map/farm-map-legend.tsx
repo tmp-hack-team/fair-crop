@@ -3,7 +3,7 @@ import { MapLegendIcon } from "./farm-map";
 
 const LEGEND = [
   ["cow", "Dairy basket"],
-  ["chicken", "Poultry basket"],
+  ["chicken", "Egg basket"],
   ["fruit", "Seasonal fruit basket"],
   ["greens", "Seasonal greens basket"],
   ["veggies", "Seasonal vegetables basket"],
