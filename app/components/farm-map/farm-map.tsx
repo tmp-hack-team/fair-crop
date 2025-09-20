@@ -520,7 +520,7 @@ export function FarmMap({
         w: 12,
         h: 8,
         x: 3,
-        y: 25,
+        y: 23,
         maxCount: allocation.chicken.total,
         highlight: allocation.chicken.user,
       },
@@ -633,6 +633,10 @@ export function FarmMap({
           for (let x = l.x; x < l.x + l.w; x += meta.w || 1) {
             let posIdx = twister.randBetween(0, meta.pos.length - 1);
 
+            if (count == l.maxCount) {
+              continue objLoop;
+            }
+
             for (let yy = 0; yy < (meta.h || 1); yy++) {
               for (let xx = 0; xx < (meta.w || 1); xx++) {
                 map[y + yy][x + xx].layers.unshift({
@@ -644,7 +648,7 @@ export function FarmMap({
                 if (
                   l?.highlight &&
                   l?.maxCount &&
-                  count < l.maxCount - l.highlight
+                  count >= l.maxCount - l.highlight
                 ) {
                   map[y + yy][x + xx].layers.unshift({
                     sprite: "/sprites/highlight.svg",

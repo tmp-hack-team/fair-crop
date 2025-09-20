@@ -2,7 +2,7 @@ import { cn } from "~/lib/utils";
 import { MapLegendIcon } from "./farm-map";
 
 const LEGEND = [
-  ["cow", "1 weekly meat basket"],
+  ["cow", "1 weekly dairy basket"],
   ["chicken", "1 weekly poultry basket"],
   ["fruit", "1 weekly seasonal fruit basket"],
   ["greens", "1 weekly seasonal greens basket"],
