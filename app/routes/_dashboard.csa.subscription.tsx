@@ -1,8 +1,21 @@
-import { useState } from "react";
+import { IconSparkles } from "@tabler/icons-react";
+import { Sparkles } from "lucide-react";
+import { useMemo, useState } from "react";
+import { SuggestMealDialog } from "~/components/ai/suggest-meal";
 import { FarmMap } from "~/components/farm-map/farm-map";
 import { FarmMapLegend } from "~/components/farm-map/farm-map-legend";
 import { mergeMapData } from "~/components/farm-map/util";
 import { Page, PageHeaderButton } from "~/components/page";
+import { Button } from "~/components/ui/button";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "~/components/ui/dialog";
+import { IconAI } from "~/components/ui/icon";
 import { DataCard, InfoCard } from "~/components/ui/info";
 import {
   Table,
@@ -75,6 +88,8 @@ export default function () {
         <FarmMap allocation={mergedAllocation} /> */}
 
         <FarmMapLegend allocation={mergedAllocation} />
+
+        <TypographyH2>Expected Production</TypographyH2>
         {months.map((month) => (
           <MonthCard month={month} />
         ))}
@@ -107,9 +122,31 @@ function MonthCard({ month }: { month: number }) {
     ([k, v]) => v.type !== "fruit" && v.type !== "vegetable"
   );
 
+  const availableIngredients = monthCrops.map(([k, v]) => {
+    return {
+      name: k,
+      ...v,
+    };
+  });
+
   return (
     <DataCard title={getMonthName(month)}>
-      <div className="gap-y-4 flex flex-col">
+      <div className="pt-2 flex flex-col">
+        <Dialog>
+          <DialogTrigger asChild>
+            <Button variant="outline" className="w-full mb-4">
+              Suggest Meals <IconAI />
+            </Button>
+          </DialogTrigger>
+          <DialogContent className="min-h-[40vh]">
+            <SuggestMealDialog
+              data={{
+                availableIngredients,
+              }}
+            />
+          </DialogContent>
+        </Dialog>
+
         <Table>
           <TableHeader>
             <TableRow>

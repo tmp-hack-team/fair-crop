@@ -27,16 +27,6 @@ export function TypographyBlockquote({
   );
 }
 
-export function TypographyList({
-  children,
-  className,
-}: {
-  children: ReactNode;
-  className?: string;
-}) {
-  return <ul className={cn("my-6 ml-6 list-disc [&>li]:mt-2")}>{children}</ul>;
-}
-
 export function TypographyLead({
   children,
   className,
@@ -100,5 +90,17 @@ export function TypographyH3({
     >
       {children}
     </h2>
+  );
+}
+
+export function TypographyList({
+  children,
+  className,
+}: {
+  children: ReactNode;
+  className?: string;
+}) {
+  return (
+    <ul className={cn("ml-6 list-disc [&>li]:mt-1", className)}>{children}</ul>
   );
 }

@@ -24,10 +24,12 @@ export function DataCard({
   title,
   children,
   className,
+  classNameContent,
 }: {
   title: string;
   children: ReactNode;
   className?: string;
+  classNameContent?: string;
 }) {
   return (
     <div className={cn("flex flex-col w-full", className)}>
@@ -40,7 +42,8 @@ export function DataCard({
       </div>
       <div
         className={cn(
-          "border-1 border-border bg-accent flex-col items-center p-2"
+          "border-1 border-border bg-infocard flex-col items-center p-2",
+          classNameContent
         )}
       >
         {children}

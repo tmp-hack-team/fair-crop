@@ -1,35 +1,38 @@
-const crops: {
-  [id: string]: {
-    type: "vegetable" | "fruit" | "meat";
-    nutrition: {
-      energyKcal: number;
-      fat: {
-        totalGrams: number;
-        saturatesGrams: number;
-      };
-      carbohydrate: {
-        totalGrams: number;
-        sugarsGrams: number;
-      };
-      proteinGrams: number;
-      sodiumMilligrams: number;
-      fiberGrams: number;
+export type ProductInfo = {
+  type: "vegetable" | "fruit" | "meat";
+  nutrition: {
+    energyKcal: number;
+    fat: {
+      totalGrams: number;
+      saturatesGrams: number;
     };
-  } & (
-    | {
-        seasonal: true;
+    carbohydrate: {
+      totalGrams: number;
+      sugarsGrams: number;
+    };
+    proteinGrams: number;
+    sodiumMilligrams: number;
+    fiberGrams: number;
+  };
+};
 
-        zones: {
-          [zoneId: string]: {
-            start: number;
-            end: number;
+const crops: {
+  [id: string]: ProductInfo &
+    (
+      | {
+          seasonal: true;
+
+          zones: {
+            [zoneId: string]: {
+              start: number;
+              end: number;
+            };
           };
-        };
-      }
-    | {
-        seasonal: false;
-      }
-  );
+        }
+      | {
+          seasonal: false;
+        }
+    );
 } = {
   Garlic: {
     seasonal: true,

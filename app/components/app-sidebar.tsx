@@ -38,8 +38,8 @@ import { Link } from "react-router";
 // This is sample data.
 const data = {
   user: {
-    name: "",
-    email: "greta@bob.com",
+    name: "Francisca M.",
+    email: "francisca@gmail.com",
     avatar: "/avatars/greta.jpg",
   },
   navMain: [

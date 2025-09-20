@@ -32,7 +32,7 @@ export function FarmMapLegend({
       </div>
       <div
         className={cn(
-          "border-1 border-border bg-accent grid gap-x-2 grid-cols-[auto_auto_auto_1fr] items-center"
+          "border-1 border-border bg-infocard grid gap-x-2 grid-cols-[auto_auto_auto_1fr] items-center"
         )}
       >
         {LEGEND.map(([k, legend]) => (
