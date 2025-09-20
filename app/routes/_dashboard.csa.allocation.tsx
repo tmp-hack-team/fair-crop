@@ -38,7 +38,7 @@ export default function () {
         <FarmMap allocation={mergedAllocation} />
 
         <FarmMapLegend
-          className={cn("px-1 mt-4")}
+          className={cn("px-1 mt-4 w-full")}
           allocation={mergedAllocation}
         />
       </div>

@@ -22,7 +22,7 @@ export function FarmMapLegend({
   };
 }) {
   return (
-    <div className={cn("flex flex-col w-full", className)}>
+    <div className={cn("flex flex-col w-fit", className)}>
       <div
         className={cn(
           "border-1 border-b-0 border-border text-table-header-fg bg-table-header p-2 font-semibold"

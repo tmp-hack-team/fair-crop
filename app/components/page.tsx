@@ -32,7 +32,7 @@ export function Page({
 }) {
   return (
     <div
-      className={cn("h-full w-full max-w-full max-h-full grow-0 flex flex-col")}
+      className={cn("h-full w-full min-w-full max-h-full grow-0 flex flex-col")}
     >
       <header className="flex h-18 shrink-0 items-center gap-2 transition-[width,height] ease-linear border-b-1 border-sidebar-border bg-header">
         <div className="flex w-full items-center gap-1 px-4 lg:gap-2 lg:px-6">
@@ -49,13 +49,10 @@ export function Page({
           </div>
         </div>
       </header>
-      <div
-        className={cn(
-          "flex flex-1 flex-col items-start gap-4 p-4 pt-4 text-sm overflow-auto",
-          className
-        )}
-      >
-        {children}
+      <div className={cn(" overflow-auto", className)}>
+        <div className="flex flex-1 flex-col items-start gap-4 p-4 pt-4 text-sm max-w-240">
+          {children}
+        </div>
       </div>
     </div>
   );

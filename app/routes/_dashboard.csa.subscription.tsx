@@ -66,7 +66,9 @@ export default function () {
 
   return (
     <Page title="Your Subscription">
-      <div className={cn("overflow-auto shrink-0 flex flex-col w-fit gap-y-4")}>
+      <div
+        className={cn("overflow-auto shrink-0 flex flex-col w-full gap-y-4")}
+      >
         <FarmMapLegend allocation={mergedAllocation} />
 
         <TypographyH2>Monthly Schedule</TypographyH2>
