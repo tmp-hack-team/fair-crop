@@ -1,0 +1,14 @@
+<svg width="16" height="16" xmlns="http://www.w3.org/2000/svg">
+    <style type="text/css">
+        :root {
+            --opacity: 0.3;
+            --color: #00ff00;
+        }
+
+        #a {
+            opacity: var(--opacity);
+            fill: var(--color);
+        }
+    </style>
+    <rect id="a" x="0" y="0" width="16" height="16" />
+</svg>

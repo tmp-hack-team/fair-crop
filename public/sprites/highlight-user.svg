@@ -2,12 +2,12 @@
     <style type="text/css">
         :root {
             --min-opacity: 0.1;
-            --max-opacity: 0.17;
+            --max-opacity: 0.4;
             --color: blue;
         }
 
         #a {
-            animation: x 1s ease alternate infinite;
+            animation: x 2s linear alternate infinite;
             fill: var(--color);
         }
 

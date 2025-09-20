@@ -65,31 +65,11 @@ export default function () {
   ].slice(0, N_MONTHS);
 
   return (
-    <Page
-      title="Your Subscription"
-      /*controls={[
-        <PageHeaderButton onClick={() => setEditing((prev) => !prev)}>
-          {isEditing ? "Save" : "Edit"}
-        </PageHeaderButton>,
-      ]}*/
-    >
+    <Page title="Your Subscription">
       <div className={cn("overflow-auto shrink-0 flex flex-col w-fit gap-y-4")}>
-        {/* <InfoCard className={cn("mx-1 mb-4")}>
-          <p>
-            This schematic is a representation of the production allocated for
-            the current season by all CSA subscribers.
-          </p>
-          <p>
-            The resources currently allocated by your subscription are
-            highlighted in pulsing blue.
-          </p>
-        </InfoCard>
-
-        <FarmMap allocation={mergedAllocation} /> */}
-
         <FarmMapLegend allocation={mergedAllocation} />
 
-        <TypographyH2>Expected Production</TypographyH2>
+        <TypographyH2>Monthly Schedule</TypographyH2>
         {months.map((month) => (
           <MonthCard month={month} />
         ))}

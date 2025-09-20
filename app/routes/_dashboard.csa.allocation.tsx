@@ -25,9 +25,14 @@ export default function () {
             the current season by all CSA subscribers.
           </p>
           <p>
-            The resources currently allocated by your subscription are
-            highlighted in pulsing blue.
+            The resources currently allocated by other subscribers are
+            highlighted <span className="bg-green-300">green</span>.
           </p>
+          <p>
+            The resources currently allocated by your subscription are
+            highlighted in <span className="bg-blue-300">pulsing blue</span>.
+          </p>
+          <p>The remaining resources are currently unalocated.</p>
         </InfoCard>
 
         <FarmMap allocation={mergedAllocation} />

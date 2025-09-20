@@ -407,10 +407,7 @@ function animalPen({
   x: number;
   y: number;
 }) {
-  return [
-    { w, h, x, y, tile: "darkerGrass" },
-    { w, h, x, y, tile: "fence" },
-  ];
+  return [{ w, h, x, y, tile: "fence" }];
 }
 
 function crops({
@@ -419,21 +416,21 @@ function crops({
   x,
   y,
   type,
-  maxCount,
-  highlight,
+  total,
+  user,
 }: {
   w: number;
   h: number;
   x: number;
   y: number;
-  maxCount?: number;
-  highlight?: number;
+  total?: number;
+  user?: number;
   type: "greens" | "veggies";
 }) {
   return [
     { w, h, x, y, tile: "dirt" },
     { w, h, x, y, tile: "grassHole" },
-    { w: w - 2, h: h - 2, x: x + 1, y: y + 1, tile: type, maxCount, highlight },
+    { w: w - 2, h: h - 2, x: x + 1, y: y + 1, tile: type, total, user },
   ];
 }
 
@@ -501,7 +498,7 @@ export function FarmMap({
         y: 1,
       }),
       ...pond({
-        type: "darkerGrass",
+        type: "grass",
         w: 6,
         h: 15,
         x: 10,
@@ -513,8 +510,8 @@ export function FarmMap({
         h: 14,
         x: 3,
         y: 2,
-        maxCount: allocation.cow.total,
-        highlight: allocation.cow.user,
+        total: allocation.cow.total,
+        user: allocation.cow.user,
       },
       ...animalPen({
         w: 16,
@@ -528,11 +525,11 @@ export function FarmMap({
         h: 8,
         x: 3,
         y: 23,
-        maxCount: allocation.chicken.total,
-        highlight: allocation.chicken.user,
+        total: allocation.chicken.total,
+        user: allocation.chicken.user,
       },
       ...pond({
-        type: "darkerGrass",
+        type: "grass",
         w: 14,
         h: 3,
         x: 2,
@@ -540,37 +537,37 @@ export function FarmMap({
       }),
       ...crops({
         type: "greens",
-        w: 22,
-        h: 10,
+        w: 11,
+        h: 20,
         x: 18,
-        y: 1,
-        maxCount: allocation.greens.total,
-        highlight: allocation.greens.user,
+        y: 15,
+        total: allocation.greens.total,
+        user: allocation.greens.user,
       }),
       ...crops({
         type: "veggies",
-        w: 22,
-        h: 10,
-        x: 18,
-        y: 11,
-        maxCount: allocation.veggies.total,
-        highlight: allocation.veggies.user,
+        w: 11,
+        h: 20,
+        x: 29,
+        y: 15,
+        total: allocation.veggies.total,
+        user: allocation.veggies.user,
       }),
-      {
+      /*{
         tile: "darkerGrass",
         w: 20,
         h: 12,
         x: 19,
         y: 22,
-      },
+      },*/
       {
         tile: "fruit",
-        w: 18,
-        h: 10,
-        x: 20,
-        y: 23,
-        maxCount: allocation.fruit.total,
-        highlight: allocation.fruit.user,
+        w: 19,
+        h: 12,
+        x: 19,
+        y: 2,
+        total: allocation.fruit.total,
+        user: allocation.fruit.user,
       },
     ],
   };
@@ -641,7 +638,7 @@ export function FarmMap({
             let posIdx = twister.randBetween(0, meta.pos.length - 1);
 
             if (count == l.maxCount) {
-              continue objLoop;
+              //continue objLoop;
             }
 
             for (let yy = 0; yy < (meta.h || 1); yy++) {
@@ -652,13 +649,17 @@ export function FarmMap({
                   y: meta.pos[posIdx][1] + yy,
                 });
 
-                if (
-                  l?.highlight &&
-                  l?.maxCount &&
-                  count >= l.maxCount - l.highlight
-                ) {
+                if (l.total && l.user && count >= l.user && count < l.total) {
                   map[y + yy][x + xx].layers.unshift({
-                    sprite: "/sprites/highlight.svg",
+                    sprite: "/sprites/highlight-total.svg",
+                    x: meta.pos[0][0] + xx,
+                    y: meta.pos[0][1] + yy,
+                  });
+                }
+
+                if (l.user && l.total && count < l.user) {
+                  map[y + yy][x + xx].layers.unshift({
+                    sprite: "/sprites/highlight-user.svg",
                     x: meta.pos[0][0] + xx,
                     y: meta.pos[0][1] + yy,
                   });
