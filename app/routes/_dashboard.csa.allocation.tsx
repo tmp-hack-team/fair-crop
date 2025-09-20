@@ -3,7 +3,7 @@ import { FarmMap, MapLegendIcon } from "~/components/farm-map/farm-map";
 import { FarmMapLegend } from "~/components/farm-map/farm-map-legend";
 import { Page, PageHeaderButton } from "~/components/page";
 
-import allocation from "~/data/allocations.json";
+import data from "~/data/allocation.json";
 
 export default function () {
   const [isEditing, setEditing] = useState(false);
@@ -18,7 +18,7 @@ export default function () {
         The resources currently allocated by your subscription are highlighted
         in pulsing blue.
       </p>
-      <FarmMap allocation={allocation} />
+      <FarmMap allocation={data.allocation} />
 
       <FarmMapLegend />
     </Page>

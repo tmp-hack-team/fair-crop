@@ -2,7 +2,7 @@ import { useState } from "react";
 import { FarmMap } from "~/components/farm-map/farm-map";
 import { Page, PageHeaderButton } from "~/components/page";
 
-import allocation from "~/data/allocations.json";
+import data from "~/data/allocation.json";
 
 export default function () {
   const [isEditing, setEditing] = useState(false);
@@ -16,7 +16,7 @@ export default function () {
         </PageHeaderButton>,
       ]}
     >
-      <FarmMap allocation={allocation} />
+      <FarmMap allocation={data.allocation} />
     </Page>
   );
 }
