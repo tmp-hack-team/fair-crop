@@ -10,7 +10,11 @@ export function SuggestMealDialog({ data }: { data: SuggestMealRequest }) {
   const isLoading = !fetcher.data;
 
   useEffect(() => {
-    fetcher.submit(data, { action: "/api/suggest-meal", method: "post" });
+    fetcher.submit(data, {
+      action: "/api/suggest-meal",
+      method: "post",
+      encType: "application/json",
+    });
   }, []);
 
   return (
@@ -31,7 +35,13 @@ export function SuggestMealDialog({ data }: { data: SuggestMealRequest }) {
                         <b>Ingredients</b>
                         <TypographyList>
                           {recipe.ingredients.map((ing) => (
-                            <li>
+                            <li
+                              className={
+                                ing.homegrown
+                                  ? "text-blue-600 font-semibold"
+                                  : ""
+                              }
+                            >
                               {ing.quantity} {ing.name}
                             </li>
                           ))}

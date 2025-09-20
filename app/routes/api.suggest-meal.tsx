@@ -18,19 +18,21 @@ export async function action({ request, context }: Route.LoaderArgs): Promise<{
     ingredients: Array<{
       name: string;
       quantity: string;
+      homegrown: boolean;
     }>;
     steps: Array<{
       text: string;
     }>;
   }>;
 }> {
-  const MODEL_ID = "anthropic.claude-3-5-haiku-20241022-v1:0";
+  const MODEL_ID = "us.anthropic.claude-3-haiku-20240307-v1:0";
   const bedrock = initBedrockClient();
-  
-  const requestData = await request.json() as SuggestMealRequest;
-  console.log(requestData)
-  const ingredients = requestData.availableIngredients.map(ing => ing.name).join(", ");
-  
+
+  const requestData = (await request.json()) as SuggestMealRequest;
+  const ingredients = requestData.availableIngredients
+    .map((ing) => ing.name)
+    .join(", ");
+
   const tools = [
     {
       name: "generate_recipes",
@@ -40,17 +42,18 @@ export async function action({ request, context }: Route.LoaderArgs): Promise<{
         properties: {
           recipes: {
             type: "array",
-            description: "List of recipes that can be made with the available ingredients",
+            description:
+              "List of recipes that can be made with the available ingredients",
             items: {
               type: "object",
               properties: {
                 title: {
                   type: "string",
-                  description: "Title of the recipe"
+                  description: "Title of the recipe",
                 },
                 servings: {
                   type: "integer",
-                  description: "Number of servings the recipe makes"
+                  description: "Number of servings the recipe makes",
                 },
                 ingredients: {
                   type: "array",
@@ -60,15 +63,15 @@ export async function action({ request, context }: Route.LoaderArgs): Promise<{
                     properties: {
                       name: {
                         type: "string",
-                        description: "Name of the ingredient"
+                        description: "Name of the ingredient",
                       },
                       quantity: {
                         type: "string",
-                        description: "Quantity of the ingredient needed"
-                      }
+                        description: "Quantity of the ingredient needed",
+                      },
                     },
-                    required: ["name", "quantity"]
-                  }
+                    required: ["name", "quantity"],
+                  },
                 },
                 steps: {
                   type: "array",
@@ -78,20 +81,20 @@ export async function action({ request, context }: Route.LoaderArgs): Promise<{
                     properties: {
                       text: {
                         type: "string",
-                        description: "Text describing the cooking step"
-                      }
+                        description: "Text describing the cooking step",
+                      },
                     },
-                    required: ["text"]
-                  }
-                }
+                    required: ["text"],
+                  },
+                },
               },
-              required: ["title", "servings", "ingredients", "steps"]
-            }
-          }
+              required: ["title", "servings", "ingredients", "steps"],
+            },
+          },
         },
-        required: ["recipes"]
-      }
-    }
+        required: ["recipes"],
+      },
+    },
   ];
 
   const prompt = `Given these ingredients: ${ingredients}, suggest at least 2 recipes that can be made with them.`;
@@ -101,7 +104,7 @@ export async function action({ request, context }: Route.LoaderArgs): Promise<{
     max_tokens: 2000,
     tools: tools,
     tool_choice: { type: "tool", name: "generate_recipes" },
-    messages: [{ role: "user", content: [{ type: "text", text: prompt }] }]
+    messages: [{ role: "user", content: [{ type: "text", text: prompt }] }],
   };
 
   try {
@@ -114,35 +117,36 @@ export async function action({ request, context }: Route.LoaderArgs): Promise<{
     );
 
     const decodedResponseBody = new TextDecoder().decode(apiResponse.body);
-    console.log(decodedResponseBody)
     const responseBody = JSON.parse(decodedResponseBody);
-    
-    const toolUseBlock = responseBody.content.find(block => block.type === "tool_use");
-    
+
+    const toolUseBlock = responseBody.content.find(
+      (block) => block.type === "tool_use"
+    );
+
     if (toolUseBlock && toolUseBlock.input && toolUseBlock.input.recipes) {
       return { recipes: toolUseBlock.input.recipes };
     }
     throw new Error("Failed to get recipes from tool use response");
   } catch (error) {
     console.error("Error calling Bedrock:", error);
-    
+
     return {
       recipes: [
         {
           title: "Chicken soup",
           servings: 2,
           ingredients: [
-            { name: "Chicken", quantity: "1" },
-            { name: "Water", quantity: "5L" },
-            { name: "Salt", quantity: "to taste" }
+            { name: "Chicken", quantity: "1", homegrown: true },
+            { name: "Water", quantity: "5L", homegrown: false },
+            { name: "Salt", quantity: "to taste", homegrown: false },
           ],
           steps: [
             { text: "Fill pan with water and place chicken" },
             { text: "Salt to taste" },
-            { text: "Let water boil and cook for 30 minutes" }
-          ]
-        }
-      ]
+            { text: "Let water boil and cook for 30 minutes" },
+          ],
+        },
+      ],
     };
   }
 }
