@@ -72,8 +72,8 @@ export default function () {
         <FarmMapLegend allocation={mergedAllocation} />
 
         <TypographyH2>Monthly Schedule</TypographyH2>
-        {months.map((month) => (
-          <MonthCard month={month} />
+        {months.map((month, i) => (
+          <MonthCard month={month} defaultCollapsed={i !== 0} />
         ))}
       </div>
     </Page>
@@ -84,7 +84,13 @@ function getMonthName(month: number) {
   return MONTH_NAMES[month - 1];
 }
 
-function MonthCard({ month }: { month: number }) {
+function MonthCard({
+  month,
+  defaultCollapsed,
+}: {
+  month: number;
+  defaultCollapsed?: boolean;
+}) {
   const monthCrops = Object.entries(products).filter(([k, v]) => {
     if (!v.seasonal) return true;
     if (v.seasonal) {
@@ -112,7 +118,11 @@ function MonthCard({ month }: { month: number }) {
   });
 
   return (
-    <DataCard title={getMonthName(month)}>
+    <DataCard
+      title={getMonthName(month)}
+      collapsible
+      defaultCollapsed={defaultCollapsed}
+    >
       <div className="pt-2 flex flex-col">
         <Dialog>
           <DialogTrigger asChild>
