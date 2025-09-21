@@ -1,17 +1,19 @@
+import type { BasketType } from "~/lib/types";
+
 const data = {
   allocations: {
     total: {
-      cow: 10,
-      chicken: 52,
+      milk: 10,
+      eggs: 52,
       greens: 20,
-      veggies: 25,
+      vegetables: 25,
       fruit: 25,
     },
     user: {
-      cow: 3,
-      chicken: 5,
+      milk: 3,
+      eggs: 5,
       greens: 1,
-      veggies: 2,
+      vegetables: 2,
       fruit: 4,
     },
   },
@@ -27,6 +29,27 @@ const data = {
       notes:
         "O maior desafio agrícola da zona é lidar com os contrastes: por um lado, o frio que pode atrasar a produção, por outro, os verões secos que exigem rega eficiente. As estufas ou túneis plásticos são grandes aliados para antecipar sementeiras de primavera e proteger hortícolas de geadas tardias. Em zonas mais secas, a rega localizada e a escolha de variedades mais resistentes ao calor são essenciais. É também uma região propícia ao cultivo de árvores de fruto como oliveira, amendoeira e videira, que convivem bem com hortícolas em consociação.",
     },
+  },
+
+  farms: {
+    pt: [
+      {
+        name: "Herdade da Franga",
+        address: "39.748745, -8.812909",
+        produce: ["milk", "eggs", "greens", "vegetables", "fruit"],
+      },
+      {
+        name: "Quinta da Amizade",
+        address: "Rua dos Amigos, km 25, Évora",
+        produce: ["milk", "eggs", "greens", "vegetables", "fruit"],
+      },
+    ],
+  } as {
+    [countryCode: string]: Array<{
+      name: string;
+      address: string;
+      produce: Array<BasketType>;
+    }>;
   },
 };
 

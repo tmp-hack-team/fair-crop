@@ -15,7 +15,7 @@ import {
   BreadcrumbPage,
 } from "./ui/breadcrumb";
 import { Outlet } from "react-router";
-import React from "react";
+import React, { useEffect } from "react";
 import { TypographyLead, TypographyP } from "./ui/typography";
 import { cn } from "~/lib/utils";
 
@@ -49,8 +49,8 @@ export function Page({
           </div>
         </div>
       </header>
-      <div className={cn(" overflow-auto", className)}>
-        <div className="flex flex-1 flex-col items-start gap-4 p-4 pt-4 text-sm max-w-240">
+      <div className={cn("h-full overflow-auto", className)}>
+        <div className="flex flex-1 flex-col items-start gap-4 p-4 pt-4 text-sm max-w-240 h-full">
           {children}
         </div>
       </div>

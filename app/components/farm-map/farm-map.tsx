@@ -243,7 +243,7 @@ const TILES: Tiles = {
       [3, 14], // green thing
     ],
   },
-  veggies: {
+  vegetables: {
     type: "object",
     sprite: "/sprites/sprout_lands_premium/Objects/Farming Plants.png",
     pos: [
@@ -264,7 +264,7 @@ const TILES: Tiles = {
       //[3, 14], // green thing
     ],
   },
-  cow: {
+  milk: {
     type: "object",
     sprite: "/sprites/sprout_lands_premium/Animals/Cow/Free Cow Sprites.png",
     pos: [
@@ -290,7 +290,7 @@ const TILES: Tiles = {
     w: 2,
     h: 2,
   },
-  chicken: {
+  eggs: {
     type: "object",
     sprite: "/sprites/sprout_lands_premium/Animals/Chicken/chicken default.png",
     pos: [
@@ -505,13 +505,13 @@ export function FarmMap({
         y: 2,
       }),
       {
-        tile: "cow",
+        tile: "milk",
         w: 6,
-        h: 14,
+        h: 10,
         x: 3,
-        y: 2,
-        total: allocation.cow.total,
-        user: allocation.cow.user,
+        y: 4,
+        total: allocation.milk.total,
+        user: allocation.milk.user,
       },
       ...animalPen({
         w: 16,
@@ -520,13 +520,13 @@ export function FarmMap({
         y: 19,
       }),
       {
-        tile: "chicken",
+        tile: "eggs",
         w: 12,
         h: 8,
         x: 3,
         y: 23,
-        total: allocation.chicken.total,
-        user: allocation.chicken.user,
+        total: allocation.eggs.total,
+        user: allocation.eggs.user,
       },
       ...pond({
         type: "grass",
@@ -545,13 +545,13 @@ export function FarmMap({
         user: allocation.greens.user,
       }),
       ...crops({
-        type: "veggies",
+        type: "vegetables",
         w: 11,
         h: 20,
         x: 29,
         y: 15,
-        total: allocation.veggies.total,
-        user: allocation.veggies.user,
+        total: allocation.vegetables.total,
+        user: allocation.vegetables.user,
       }),
       /*{
         tile: "darkerGrass",

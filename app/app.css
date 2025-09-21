@@ -66,6 +66,8 @@ body {
   --color-table-header-fg: var(--table-header-fg);
   --color-text-selection: var(--text-selection);
   --color-infocard: var(--infocard);
+  --color-chat-received: var(--chat-received);
+  --color-chat-sent: var(--chat-sent);
 }
 
 :root {
@@ -86,7 +88,7 @@ body {
   --accent-foreground: #000000;
   --destructive: oklch(0.577 0.245 27.325);
   --border: #6d8260;
-  --input: oklch(0.923 0.003 48.717);
+  --input: #f3f4e8;
   --ring: #000000;
   --chart-1: oklch(0.646 0.222 41.116);
   --chart-2: oklch(0.6 0.118 184.704);
@@ -104,9 +106,11 @@ body {
   --header: #e2efc0;
   --table: #f3f2c5;
   --table-header: #c4d37d;
-  --table-header-fg: #664c5a;
+  --table-header-fg: #000000;
   --text-selection: #c8dfa1;
   --infocard: #e9eeb1;
+  --chat-received: #e9eeb1;
+  --chat-sent: #e9eeb1;
 }
 
 /*.dark {

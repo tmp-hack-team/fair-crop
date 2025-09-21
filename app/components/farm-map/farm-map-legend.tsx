@@ -2,11 +2,11 @@ import { cn } from "~/lib/utils";
 import { MapLegendIcon } from "./farm-map";
 
 const LEGEND = [
-  ["cow", "Dairy basket"],
-  ["chicken", "Egg basket"],
+  ["milk", "Dairy basket"],
+  ["eggs", "Egg basket"],
   ["fruit", "Seasonal fruit basket"],
-  ["greens", "Seasonal greens basket"],
-  ["veggies", "Seasonal vegetables basket"],
+  ["greens", "Seasonal leafy greens basket"],
+  ["vegetables", "Seasonal vegetables basket"],
 ];
 
 export function FarmMapLegend({

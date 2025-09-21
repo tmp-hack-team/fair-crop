@@ -123,6 +123,8 @@ export async function action({ request, context }: Route.LoaderArgs): Promise<{
       (block) => block.type === "tool_use"
     );
 
+    console.log(JSON.stringify(toolUseBlock, null, 2));
+
     if (toolUseBlock && toolUseBlock.input && toolUseBlock.input.recipes) {
       return { recipes: toolUseBlock.input.recipes };
     }

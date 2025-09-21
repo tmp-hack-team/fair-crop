@@ -17,6 +17,10 @@ import {
   HandCoins,
   MessageCircleQuestionIcon,
   MessageCircleQuestionMark,
+  CalendarPlus2,
+  Calendar,
+  CalendarCheck,
+  CalendarCog,
 } from "lucide-react";
 
 import { NavMain } from "~/components/nav-main";
@@ -48,12 +52,12 @@ const data = {
       items: [
         {
           title: "About Us",
-          url: "/csa/about",
+          url: "/",
           icon: MessageCircleQuestionMark,
         },
         {
           title: "Current Allocation",
-          url: "/csa/allocation",
+          url: "/allocation",
           icon: LandPlot,
         },
       ],
@@ -63,8 +67,13 @@ const data = {
       items: [
         {
           title: "Schedule",
-          url: "/csa/subscription",
-          icon: HandCoins,
+          url: "/subscription",
+          icon: Calendar,
+        },
+        {
+          title: "Manage Subscription",
+          url: "/subscription",
+          icon: CalendarCog,
         },
       ],
     },

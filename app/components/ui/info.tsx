@@ -29,7 +29,7 @@ export function DataCard({
   collapsible,
   defaultCollapsed,
 }: {
-  title: string;
+  title: ReactNode;
   children: ReactNode;
   className?: string;
   classNameContent?: string;
@@ -45,7 +45,7 @@ export function DataCard({
           "border-1 border-b-0 border-border text-table-header-fg bg-table-header p-2 font-semibold flex justify-between rounded-t-sm"
         )}
       >
-        <span>{title}</span>
+        <span className="w-full pl-1">{title}</span>
 
         {collapsible && (
           <div

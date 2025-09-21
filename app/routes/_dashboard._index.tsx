@@ -1,11 +1,34 @@
+import { Link } from "react-router";
 import { Page } from "~/components/page";
+import { Button } from "~/components/ui/button";
+import { TypographyH2 } from "~/components/ui/typography";
 
 export default function () {
   return (
     <Page title="About Us" className="max-w-[50em]">
       <img src="/images/crops.jpg" />
-
+      <TypographyH2>What is CSA?</TypographyH2>
       <p>
+        CSA (Community Supported Agriculture) aims to connect consumers directly
+        with local farmers. By purchasing a share of the season's produce in
+        advance, CSA members directly support local farmers and receive a
+        Harvest Basket filled with fresh, local, sustainably grown veggies on a
+        weekly basis.
+      </p>
+      <TypographyH2>How can I get involved?</TypographyH2>
+      <p>
+        Our platform offers a simple, streamlined way to connect with your local
+        farmer. We ensure the integrity and sustainability of all the
+        co-producers who work with us, and do our best to create a viable
+        alternative, striving to best than the traditional consumer market in
+        all aspects.
+      </p>
+      <p>
+        <Button size="xl" asChild>
+          <Link to={"/subscription"}>Sign Up Today</Link>
+        </Button>
+      </p>
+      {/*       <p>
         <strong>Welcome to FairCrop</strong>, the platform that connects
         consumers directly with local farms through Community-Supported
         Agriculture (CSA) programs. Our service allows you to find and subscribe
@@ -36,6 +59,7 @@ export default function () {
         just as a bountiful harvest is passed on to the members. This principle
         of shared investment is fundamental to the CSA model.
       </p>
+ */}{" "}
     </Page>
   );
 }

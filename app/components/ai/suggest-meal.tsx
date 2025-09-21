@@ -35,13 +35,7 @@ export function SuggestMealDialog({ data }: { data: SuggestMealRequest }) {
                         <b>Ingredients</b>
                         <TypographyList>
                           {recipe.ingredients.map((ing) => (
-                            <li
-                              className={
-                                ing.homegrown
-                                  ? "text-blue-600 font-semibold"
-                                  : ""
-                              }
-                            >
+                            <li>
                               {ing.quantity} {ing.name}
                             </li>
                           ))}
