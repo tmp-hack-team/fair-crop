@@ -7,6 +7,8 @@ import { useFetcher } from "react-router";
 import type { action } from "./api.subscribe-bot";
 import { Spinner } from "components/ui/shadcn-io/spinner";
 import { Input } from "~/components/ui/input";
+import Markdown from "react-markdown";
+
 export async function loader({ context }: Route.LoaderArgs) {
   return {};
 }
@@ -78,7 +80,7 @@ function ChatBot({}: {}) {
               console.log(msg);
               return (
                 <Message key={i} source="assistant">
-                  {msg.content[0].text}
+                  <Markdown>{msg.content[0].text}</Markdown>
                 </Message>
               );
             }
@@ -86,7 +88,7 @@ function ChatBot({}: {}) {
 
           {fetcher.state !== "idle" ? (
             <Message source="assistant">
-              <Spinner />
+              <Spinner variant="pinwheel" />
             </Message>
           ) : null}
         </div>
@@ -115,6 +117,7 @@ function ChatBot({}: {}) {
             type="text"
             name="message"
             disabled={fetcher.state !== "idle"}
+            placeholder="Type a message..."
           />
         </form>
       </div>
@@ -132,7 +135,7 @@ function Message({
   return (
     <div
       className={cn(
-        "p-4 rounded-lg mb-2 border-1 border-border",
+        "message p-4 rounded-lg mb-2 border-1 border-border",
         source === "user" ? "bg-chat-sent" : "bg-chat-received"
       )}
     >

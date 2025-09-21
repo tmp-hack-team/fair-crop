@@ -64,6 +64,7 @@ import {
 import products from "~/data/products";
 import { FarmMapLegend } from "~/components/farm-map/farm-map-legend";
 import { mergeMapData } from "~/components/farm-map/util";
+import Markdown from "react-markdown";
 
 export async function loader({ context }: Route.LoaderArgs) {
   return {};
@@ -135,7 +136,7 @@ function CreateSubscription({
         }}
       >
         <SelectTrigger className="w-[300px]">
-          <SelectValue placeholder="Select your country..." />
+          <SelectValue placeholder="Select a country..." />
         </SelectTrigger>
         <SelectContent>
           <SelectItem value="pt">Portugal</SelectItem>
@@ -247,13 +248,13 @@ function ChatBot({
               if (msg.content[0].name === "text_message") {
                 return (
                   <Message key={i} source="assistant">
-                    {msg.content[0].input.message}
+                    <Markdown>{msg.content[0].input.message}</Markdown>
                   </Message>
                 );
               } else if (msg.content[0].name === "offer") {
                 return (
                   <Message key={i} source="assistant">
-                    {msg.content[0].input.message}
+                    <Markdown>{msg.content[0].input.message}</Markdown>
                     <div className="my-2">
                       {Object.entries(BASKET_TYPES).map(([k, basket]) => {
                         return (
@@ -282,7 +283,7 @@ function ChatBot({
 
           {fetcher.state !== "idle" ? (
             <Message source="assistant">
-              <Spinner />
+              <Spinner variant="pinwheel" />
             </Message>
           ) : null}
         </div>
@@ -313,6 +314,7 @@ function ChatBot({
             type="text"
             name="message"
             disabled={fetcher.state !== "idle"}
+            placeholder="Type a message..."
           />
         </form>
       </div>
@@ -441,7 +443,7 @@ function Message({
   return (
     <div
       className={cn(
-        "p-4 rounded-lg mb-2 border-1 border-border",
+        "message p-4 rounded-lg mb-2 border-1 border-border",
         source === "user" ? "bg-chat-sent" : "bg-chat-received"
       )}
     >

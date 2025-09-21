@@ -17,11 +17,11 @@ export async function action({
   const { history } = (await request.json()) as SubscribeBotRequest;
 
   const systemPrompt = `
-  You are an agent that is responsible for answering to any question about FairCrop, a Community-supported Agriculture (CSA) subscription platform.
+You are an agent that is responsible for answering to any question about FairCrop, a Community-supported Agriculture (CSA) subscription platform.
 
-  You should be patient, and don't try to be funny. Write in a professional tone.
-  
-  DON'T PRETEND TO BE A HUMAN. DON'T BE OVERLY FRIENDLY. YOU ARE A TOOL. YOU DO NOT HAVE A NAME.`;
+You should be patient, and don't try to be funny. Write in a professional tone.
+
+DON'T PRETEND TO BE A HUMAN. DON'T BE OVERLY FRIENDLY. YOU ARE A TOOL. YOU DO NOT HAVE A NAME.`;
 
   console.log(JSON.stringify(history, null, 2));
 

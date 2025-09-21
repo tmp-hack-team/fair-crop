@@ -22,6 +22,7 @@ import {
   CalendarCheck,
   CalendarCog,
   Sparkles,
+  Heart,
 } from "lucide-react";
 
 import { NavMain } from "~/components/nav-main";
@@ -80,6 +81,11 @@ const data = {
           title: "AI Support",
           url: "/support",
           icon: Sparkles,
+        },
+        {
+          title: "About Us",
+          url: "/about",
+          icon: Heart,
         },
       ],
     },

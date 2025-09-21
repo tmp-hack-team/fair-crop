@@ -1,4 +1,4 @@
-import type { ProductInfo } from "~/data/crops";
+import type { ProductInfo } from "~/data/products";
 import type { Route } from "./+types/api.suggest-meal";
 import { initBedrockClient } from "~/lib/bedrock";
 import { InvokeModelCommand } from "@aws-sdk/client-bedrock-runtime";

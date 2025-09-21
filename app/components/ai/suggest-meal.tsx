@@ -40,7 +40,7 @@ export function SuggestMealDialog({ data }: { data: SuggestMealRequest }) {
           <div className="flex flex-col gap-y-4 py-2 max-h-[80vh] overflow-scroll">
             {isLoading ? (
               <span className="flex flex-row gap-x-2">
-                <Spinner /> Generating recipes...
+                <Spinner variant="pinwheel" /> Generating recipes...
               </span>
             ) : (
               fetcher.data!.recipes.map((recipe) => {
