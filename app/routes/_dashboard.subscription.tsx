@@ -125,8 +125,9 @@ function CreateSubscription({
     <>
       <TypographyH2>Welcome!</TypographyH2>
       <p>
-        You're minutes away from connecting with your local community, and
-        contribute to a sustainable and fair circular economy.
+        You're minutes away from connecting with your local communit and
+        contributing to a <em>fair</em> and <em>sustainable</em> circular
+        economy.
       </p>
 
       <TypographyH2>Select your location</TypographyH2>
@@ -159,6 +160,7 @@ function CreateSubscription({
                     return (
                       <div
                         key={basketType}
+                        title={meta.label}
                         className={cn(
                           "p-1 rounded-xl",
                           farm.produce.indexOf(basketType as BasketType) != -1

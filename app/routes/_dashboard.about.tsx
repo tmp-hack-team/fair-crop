@@ -7,7 +7,7 @@ export default function AboutPage() {
     <Page title="About the Team">
       <TypographyH2>Why does this exist?</TypographyH2>
       <p>
-        This project was developed in 48 hours, on the 19, 20 and 21 of
+        This project was fully developed in 48 hours, on the 19, 20 and 21 of
         September 2025, by{" "}
         <Link to="https://github.com/lud0v1c">Luís Tonicha</Link> and{" "}
         <Link to="https://github.com/tiagoad">Tiago Dias</Link> (aka.{" "}

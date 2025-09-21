@@ -42,7 +42,7 @@ export default function () {
             The resources currently allocated by your subscription are
             highlighted in <span className="bg-blue-200">pulsing blue</span>.
           </p>
-          <p>The remaining resources are currently unalocated.</p>
+          <p>The remaining resources are currently unallocated.</p>
         </InfoCard>
 
         <FarmMap production={mergedProduction} />
