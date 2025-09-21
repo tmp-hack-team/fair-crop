@@ -83,9 +83,13 @@ function ChatBot({}: {}) {
               );
             }
           })}
-        </div>
 
-        {fetcher.state !== "idle" ? <Spinner /> : null}
+          {fetcher.state !== "idle" ? (
+            <Message source="assistant">
+              <Spinner />
+            </Message>
+          ) : null}
+        </div>
       </div>
 
       <div className="mt-auto w-full">
