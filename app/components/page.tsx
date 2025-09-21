@@ -35,7 +35,7 @@ export function Page({
       className={cn("h-full w-full min-w-full max-h-full grow-0 flex flex-col")}
     >
       <header className="flex h-18 shrink-0 items-center gap-2 transition-[width,height] ease-linear border-b-1 border-sidebar-border bg-header">
-        <div className="flex w-full items-center gap-1 px-4 lg:gap-2 lg:px-6">
+        <div className="flex w-full items-center gap-1 px-4 lg:gap-2 lg:px-6 font-semibold">
           <SidebarTrigger className="-ml-1" />
           <Separator
             orientation="vertical"

@@ -30,3 +30,12 @@ export const BASKET_TYPES = {
 };
 
 export type BasketType = keyof typeof BASKET_TYPES;
+
+export type BasketSubscription = { [k in BasketType]: number };
+export type Subscription = {
+  baskets: BasketSubscription;
+  fullName: string;
+  email: string;
+  address: string;
+  phone: string;
+};

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { FarmMap, MapLegendIcon } from "~/components/farm-map/farm-map";
 import { FarmMapLegend } from "~/components/farm-map/farm-map-legend";
 import { mergeMapData } from "~/components/farm-map/util";
@@ -6,14 +6,24 @@ import { Page, PageHeaderButton } from "~/components/page";
 import { InfoCard } from "~/components/ui/info";
 
 import data from "~/data/data";
+import type { Subscription } from "~/lib/types";
 import { cn } from "~/lib/utils";
 
 export default function () {
   const [isEditing, setEditing] = useState(false);
 
+  const [subscription, setSubscription] = useState<null | Subscription>(null);
+
+  useEffect(() => {
+    const sub = localStorage.getItem("subscription");
+    if (sub !== null) {
+      setSubscription(JSON.parse(sub));
+    }
+  }, []);
+
   const mergedAllocation = mergeMapData(
     data.allocations.total,
-    data.allocations.user
+    subscription ? subscription.baskets : {}
   );
 
   return (
@@ -38,7 +48,7 @@ export default function () {
         <FarmMap allocation={mergedAllocation} />
 
         <FarmMapLegend
-          className={cn("px-1 mt-4 w-full")}
+          className={cn("px-1 mt-4 w-full mb-4")}
           allocation={mergedAllocation}
         />
       </div>

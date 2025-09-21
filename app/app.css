@@ -86,7 +86,7 @@ body {
   --muted-foreground: oklch(0.553 0.013 58.071);
   --accent: #d5e085;
   --accent-foreground: #000000;
-  --destructive: oklch(0.577 0.245 27.325);
+  --destructive: #a66c78;
   --border: #6d8260;
   --input: #f3f4e8;
   --ring: #000000;

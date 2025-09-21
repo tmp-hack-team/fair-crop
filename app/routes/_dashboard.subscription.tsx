@@ -1,6 +1,11 @@
 import type { Route } from "./+types/_dashboard.subscription";
 import { Page } from "~/components/page";
-import { BASKET_TYPES, type BasketType } from "~/lib/types";
+import {
+  BASKET_TYPES,
+  type BasketSubscription,
+  type BasketType,
+  type Subscription,
+} from "~/lib/types";
 import { TypographyH2 } from "~/components/ui/typography";
 import { Button } from "~/components/ui/button";
 import {
@@ -36,7 +41,16 @@ import {
   FormLabel,
   FormMessage,
 } from "~/components/ui/form";
-import { Dialog, DialogContent, DialogTrigger } from "~/components/ui/dialog";
+import {
+  Dialog,
+  DialogClose,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "~/components/ui/dialog";
 import { IconAI } from "~/components/ui/icon";
 import { SuggestMealDialog } from "~/components/ai/suggest-meal";
 import {
@@ -55,39 +69,37 @@ export async function loader({ context }: Route.LoaderArgs) {
   return {};
 }
 
-type BasketSubscription = { [k in BasketType]: number };
-
-type Subscription = {
-  baskets: BasketSubscription;
-} & FinalizeOfferFormValues;
-
 export default function ManageSubscription({
   loaderData,
 }: Route.ComponentProps) {
-  const [subscription, setSubscription] = useState<null | Subscription>(() => {
-    if (typeof localStorage === "undefined") return null;
+  const [subscription, setSubscription] = useState<null | Subscription>(null);
 
+  useEffect(() => {
     const sub = localStorage.getItem("subscription");
-    if (sub === null) {
-      return null;
-    } else {
-      return JSON.parse(sub);
+    if (sub !== null) {
+      setSubscription(JSON.parse(sub));
     }
-  });
+  }, []);
 
-  function updateSubscription(sub: Subscription) {
-    localStorage.setItem("subscription", JSON.stringify(sub));
+  function updateSubscription(sub: Subscription | null) {
+    if (sub === null) {
+      localStorage.removeItem("subscription");
+    } else {
+      localStorage.setItem("subscription", JSON.stringify(sub));
+    }
+
     setSubscription(sub);
   }
 
   return (
     <Page title="Manage Subscription">
-      {typeof localStorage === "undefined" ? (
-        <Spinner />
-      ) : subscription === null ? (
+      {subscription === null ? (
         <CreateSubscription onChange={updateSubscription} />
       ) : (
-        <EditSubscription subscription={subscription} />
+        <EditSubscription
+          subscription={subscription}
+          onChange={updateSubscription}
+        />
       )}
     </Page>
   );
@@ -98,10 +110,15 @@ function CreateSubscription({
 }: {
   onChange: (sub: Subscription) => void;
 }) {
-  const [country, setCountry] = useState<null | string>("pt");
+  const [country, setCountry] = useState<null | string>(null);
   const farms = country === null ? null : data.farms[country];
-  const [farm, setFarm] = useState<null | number>(0);
+  const [farm, setFarm] = useState<null | number>(null);
   const [offer, setOffer] = useState<null | BasketSubscription>(null);
+
+  const onSelectOffer = useCallback(
+    (offer: BasketSubscription) => setOffer(offer),
+    []
+  );
 
   return farm === null ? (
     <>
@@ -133,13 +150,14 @@ function CreateSubscription({
           <TypographyH2>Select your local farm</TypographyH2>
 
           {farms.map((farm, farmId) => (
-            <DataCard title={farm.name}>
+            <DataCard title={farm.name} key={farmId}>
               <div>
                 <span>{farm.address}</span>
                 <div className="flex flex-row gap-x-1.5 align-middle my-4">
                   {Object.entries(BASKET_TYPES).map(([basketType, meta]) => {
                     return (
                       <div
+                        key={basketType}
                         className={cn(
                           "p-1 rounded-xl",
                           farm.produce.indexOf(basketType as BasketType) != -1
@@ -160,7 +178,7 @@ function CreateSubscription({
       )}
     </>
   ) : offer === null ? (
-    <ChatBot onSelectOffer={(offer) => setOffer(offer)} />
+    <ChatBot onSelectOffer={onSelectOffer} />
   ) : (
     offer && <FinalizeOffer offer={offer} onFinalised={onChange} />
   );
@@ -186,7 +204,7 @@ function ChatBot({
     }
   }, [fetcher.data]);
 
-  const sendMessage = useCallback((message: any) => {
+  const sendMessage = function (message: any) {
     history.current = [...history.current, message];
     fetcher.submit(
       {
@@ -199,9 +217,11 @@ function ChatBot({
       }
     );
     scrollRef.current!.scrollTo(0, scrollRef.current!.scrollHeight);
-  }, []);
+  };
 
   useEffect(() => {
+    console.log("USE EFFECT!");
+
     sendMessage({
       role: "user",
       content: [
@@ -214,21 +234,25 @@ function ChatBot({
     <>
       <TypographyH2>Let's find the perfect subscription for you</TypographyH2>
 
-      <div className="overflow-auto" ref={scrollRef}>
+      <div className="overflow-auto h-full w-full" ref={scrollRef}>
         <div className="">
-          {history.current.slice(1).map((msg) => {
+          {history.current.slice(1).map((msg, i) => {
             if (msg.role === "user") {
-              return <Message source="user">{msg.content[0].content}</Message>;
+              return (
+                <Message key={i} source="user">
+                  {msg.content[0].content}
+                </Message>
+              );
             } else {
               if (msg.content[0].name === "text_message") {
                 return (
-                  <Message source="assistant">
+                  <Message key={i} source="assistant">
                     {msg.content[0].input.message}
                   </Message>
                 );
               } else if (msg.content[0].name === "offer") {
                 return (
-                  <Message source="assistant">
+                  <Message key={i} source="assistant">
                     {msg.content[0].input.message}
                     <div className="my-2">
                       {Object.entries(BASKET_TYPES).map(([k, basket]) => {
@@ -449,7 +473,13 @@ const months = [
   ...MONTH_NUMBERS.slice(0, CURR_MONTH - 1),
 ].slice(0, N_MONTHS);
 
-function EditSubscription({ subscription }: { subscription: Subscription }) {
+function EditSubscription({
+  subscription,
+  onChange,
+}: {
+  subscription: Subscription;
+  onChange: (sub: Subscription | null) => void;
+}) {
   const mergedAllocation = mergeMapData(
     data.allocations.total,
     subscription.baskets
@@ -460,7 +490,30 @@ function EditSubscription({ subscription }: { subscription: Subscription }) {
       <div
         className={cn("overflow-auto shrink-0 flex flex-col w-full gap-y-4")}
       >
-        <FarmMapLegend allocation={mergedAllocation} />
+        <TypographyH2>Your Subscription</TypographyH2>
+        <FarmMapLegend allocation={mergedAllocation} withTitle={false} />
+
+        <div>
+          <Dialog>
+            <DialogTrigger asChild>
+              <Button variant="destructive">Cancel Subscription</Button>
+            </DialogTrigger>
+            <DialogContent>
+              <DialogHeader>
+                <DialogTitle>Are you sure?</DialogTitle>
+                <DialogDescription>
+                  Please confirm you would like to discontinue your CSA
+                  subscription.
+                </DialogDescription>
+              </DialogHeader>
+              <DialogFooter>
+                <DialogClose asChild>
+                  <Button onClick={() => onChange(null)}>Confirm</Button>
+                </DialogClose>
+              </DialogFooter>
+            </DialogContent>
+          </Dialog>
+        </div>
 
         <TypographyH2>Monthly Schedule</TypographyH2>
         {months.map((month, i) => (
@@ -521,7 +574,7 @@ function MonthCard({
               Suggest Meals <IconAI />
             </Button>
           </DialogTrigger>
-          <DialogContent className="min-h-[40vh]">
+          <DialogContent className="min-h-[40vh] min-w-[60vw]">
             <SuggestMealDialog
               data={{
                 availableIngredients,

@@ -21,6 +21,7 @@ import {
   Calendar,
   CalendarCheck,
   CalendarCog,
+  Sparkles,
 } from "lucide-react";
 
 import { NavMain } from "~/components/nav-main";
@@ -42,16 +43,16 @@ import { Link } from "react-router";
 // This is sample data.
 const data = {
   user: {
-    name: "Francisca M.",
-    email: "francisca@gmail.com",
-    avatar: "/avatars/greta.jpg",
+    name: "José F.",
+    email: "josefelg@gmail.com",
+    avatar: "/avatars/jose.png",
   },
   navMain: [
     {
       title: "Production",
       items: [
         {
-          title: "About Us",
+          title: "About CSA",
           url: "/",
           icon: MessageCircleQuestionMark,
         },
@@ -66,14 +67,19 @@ const data = {
       title: "Subscription",
       items: [
         {
-          title: "Schedule",
-          url: "/subscription",
-          icon: Calendar,
-        },
-        {
           title: "Manage Subscription",
           url: "/subscription",
           icon: CalendarCog,
+        },
+      ],
+    },
+    {
+      title: "More",
+      items: [
+        {
+          title: "AI Support",
+          url: "/qa",
+          icon: Sparkles,
         },
       ],
     },

@@ -5,7 +5,7 @@ import { TypographyH2 } from "~/components/ui/typography";
 
 export default function () {
   return (
-    <Page title="About Us" className="max-w-[50em]">
+    <Page title="About CSA" className="max-w-[50em]">
       <img src="/images/crops.jpg" />
       <TypographyH2>What is CSA?</TypographyH2>
       <p>
@@ -15,19 +15,20 @@ export default function () {
         Harvest Basket filled with fresh, local, sustainably grown veggies on a
         weekly basis.
       </p>
-      <TypographyH2>How can I get involved?</TypographyH2>
+      <Button size="lg" asChild>
+        <Link to={"/allocation"}>View Production</Link>
+      </Button>
+      <TypographyH2 className="mt-4">How can I get involved?</TypographyH2>
       <p>
         Our platform offers a simple, streamlined way to connect with your local
         farmer. We ensure the integrity and sustainability of all the
         co-producers who work with us, and do our best to create a viable
-        alternative, striving to best than the traditional consumer market in
-        all aspects.
+        alternative, striving to best the traditional consumer market in all
+        aspects.
       </p>
-      <p>
-        <Button size="xl" asChild>
-          <Link to={"/subscription"}>Sign Up Today</Link>
-        </Button>
-      </p>
+      <Button size="lg" asChild>
+        <Link to={"/subscription"}>Sign Up Today</Link>
+      </Button>
       {/*       <p>
         <strong>Welcome to FairCrop</strong>, the platform that connects
         consumers directly with local farms through Community-Supported

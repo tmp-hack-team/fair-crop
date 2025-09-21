@@ -651,7 +651,12 @@ export function FarmMap({
                 });
 
                 // @ts-ignore
-                if (l.total && l.user && count >= l.user && count < l.total) {
+                if (
+                  l.total !== undefined &&
+                  l.user !== undefined &&
+                  count >= l.user &&
+                  count < l.total
+                ) {
                   map[y + yy][x + xx].layers.unshift({
                     sprite: "/sprites/highlight-total.svg",
                     x: meta.pos[0][0] + xx,
@@ -660,7 +665,11 @@ export function FarmMap({
                 }
 
                 // @ts-ignore
-                if (l.user && l.total && count < l.user) {
+                if (
+                  l.user !== undefined &&
+                  l.total !== undefined &&
+                  count < l.user
+                ) {
                   map[y + yy][x + xx].layers.unshift({
                     sprite: "/sprites/highlight-user.svg",
                     x: meta.pos[0][0] + xx,

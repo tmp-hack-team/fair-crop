@@ -18,7 +18,7 @@ export async function action({ request, context }: Route.LoaderArgs): Promise<{
     ingredients: Array<{
       name: string;
       quantity: string;
-      homegrown: boolean;
+      fromCSA: boolean;
     }>;
     steps: Array<{
       text: string;
@@ -69,8 +69,13 @@ export async function action({ request, context }: Route.LoaderArgs): Promise<{
                         type: "string",
                         description: "Quantity of the ingredient needed",
                       },
+                      fromCSA: {
+                        type: "boolean",
+                        description:
+                          "True if this ingredient is sourced from the CSA basket",
+                      },
                     },
-                    required: ["name", "quantity"],
+                    required: ["name", "quantity", "fromCSA"],
                   },
                 },
                 steps: {
@@ -97,7 +102,7 @@ export async function action({ request, context }: Route.LoaderArgs): Promise<{
     },
   ];
 
-  const prompt = `Given these ingredients: ${ingredients}, suggest at least 2 recipes that can be made with them.`;
+  const prompt = `Given these ingredients: ${ingredients}, suggest at least 2 recipes that can be made with them. You can add some very common ingredients like pasta, rice, potatoes, etc.`;
 
   const payload = {
     anthropic_version: "bedrock-2023-05-31",
@@ -138,9 +143,9 @@ export async function action({ request, context }: Route.LoaderArgs): Promise<{
           title: "Chicken soup",
           servings: 2,
           ingredients: [
-            { name: "Chicken", quantity: "1", homegrown: true },
-            { name: "Water", quantity: "5L", homegrown: false },
-            { name: "Salt", quantity: "to taste", homegrown: false },
+            { name: "Chicken", quantity: "1", fromCSA: true },
+            { name: "Water", quantity: "5L", fromCSA: false },
+            { name: "Salt", quantity: "to taste", fromCSA: false },
           ],
           steps: [
             { text: "Fill pan with water and place chicken" },

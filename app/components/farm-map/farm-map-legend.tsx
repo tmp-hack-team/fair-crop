@@ -12,8 +12,10 @@ const LEGEND = [
 export function FarmMapLegend({
   className,
   allocation,
+  withTitle,
 }: {
   className?: string;
+  withTitle?: boolean;
   allocation: {
     [k: string]: {
       total: number;
@@ -23,16 +25,19 @@ export function FarmMapLegend({
 }) {
   return (
     <div className={cn("flex flex-col w-fit", className)}>
+      {withTitle !== false && (
+        <div
+          className={cn(
+            "border-1 border-b-0 border-border text-table-header-fg bg-table-header p-2 font-semibold rounded-t-sm"
+          )}
+        >
+          Summary
+        </div>
+      )}
       <div
         className={cn(
-          "border-1 border-b-0 border-border text-table-header-fg bg-table-header p-2 font-semibold rounded-t-sm"
-        )}
-      >
-        Summary
-      </div>
-      <div
-        className={cn(
-          "border-1 border-border bg-infocard grid gap-x-2 grid-cols-[auto_auto_auto_1fr] items-center rounded-b-sm"
+          "border-1 border-border bg-infocard grid gap-x-2 grid-cols-[auto_auto_auto_1fr] items-center rounded-b-sm",
+          withTitle === false ? "rounded-sm" : ""
         )}
       >
         {LEGEND.map(([k, legend]) => (
@@ -42,10 +47,11 @@ export function FarmMapLegend({
             </div>
             <div>{legend}</div>
             <div className="italic pl-4">
-              Your subscription: {allocation[k].user}/wk
+              You:{" "}
+              {allocation[k].user === 0 ? `none` : `${allocation[k].user}/wk`}
             </div>
             <div className="italic pl-4 pr-4">
-              Total production: {allocation[k].total}/wk
+              Reserved: {allocation[k].total}/wk
             </div>
           </>
         ))}
