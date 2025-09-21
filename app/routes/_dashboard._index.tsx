@@ -16,7 +16,7 @@ export default function () {
         weekly basis.
       </p>
       <Button size="lg" asChild>
-        <Link to={"/production"}>View Production</Link>
+        <Link to={"/production"}>Current Production</Link>
       </Button>
       <TypographyH2 className="mt-4">How can I get involved?</TypographyH2>
       <p>
@@ -32,8 +32,8 @@ export default function () {
       <TypographyH2 className="mt-4">How do I learn more?</TypographyH2>
       <p>
         Our AI assistant is ready 24/7 to answer all your questions about
-        FairCrop, and CSA in general. Press <em>AI Support</em> in the Sidebar
-        or click the button below to clarify all your questions and doubts!
+        FairCrop and CSA in general. Press <em>AI Support</em> in the Sidebar or
+        click the button below to clarify all your questions and doubts!
       </p>
       <Button size="lg" asChild>
         <Link to={"/support"}>24/7 Support</Link>

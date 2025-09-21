@@ -83,7 +83,7 @@ const data = {
           icon: Sparkles,
         },
         {
-          title: "About Us",
+          title: "About the Team",
           url: "/about",
           icon: Heart,
         },
