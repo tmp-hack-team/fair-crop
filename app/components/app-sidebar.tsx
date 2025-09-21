@@ -57,8 +57,8 @@ const data = {
           icon: MessageCircleQuestionMark,
         },
         {
-          title: "Current Allocation",
-          url: "/allocation",
+          title: "Current Production",
+          url: "/production",
           icon: LandPlot,
         },
       ],
@@ -78,7 +78,7 @@ const data = {
       items: [
         {
           title: "AI Support",
-          url: "/qa",
+          url: "/support",
           icon: Sparkles,
         },
       ],

@@ -11,12 +11,12 @@ const LEGEND = [
 
 export function FarmMapLegend({
   className,
-  allocation,
+  production,
   withTitle,
 }: {
   className?: string;
   withTitle?: boolean;
-  allocation: {
+  production: {
     [k: string]: {
       total: number;
       user?: number;
@@ -48,10 +48,10 @@ export function FarmMapLegend({
             <div>{legend}</div>
             <div className="italic pl-4">
               You:{" "}
-              {allocation[k].user === 0 ? `none` : `${allocation[k].user}/wk`}
+              {production[k].user === 0 ? `none` : `${production[k].user}/wk`}
             </div>
             <div className="italic pl-4 pr-4">
-              Reserved: {allocation[k].total}/wk
+              Reserved: {production[k].total}/wk
             </div>
           </>
         ))}

@@ -467,11 +467,11 @@ function getTilePosKey({
 }
 
 export function FarmMap({
-  allocation,
+  production,
   withLegend,
   withInfo,
 }: {
-  allocation: {
+  production: {
     [k: string]: {
       total: number;
       user?: number;
@@ -480,7 +480,7 @@ export function FarmMap({
   withLegend?: boolean;
   withInfo?: boolean;
 }) {
-  console.log({ allocation });
+  console.log({ production });
   const config = {
     mapSize: { w: 41, h: 36 },
     layers: [
@@ -510,8 +510,8 @@ export function FarmMap({
         h: 10,
         x: 3,
         y: 4,
-        total: allocation.milk.total,
-        user: allocation.milk.user,
+        total: production.milk.total,
+        user: production.milk.user,
       },
       ...animalPen({
         w: 16,
@@ -525,8 +525,8 @@ export function FarmMap({
         h: 8,
         x: 3,
         y: 23,
-        total: allocation.eggs.total,
-        user: allocation.eggs.user,
+        total: production.eggs.total,
+        user: production.eggs.user,
       },
       ...pond({
         type: "grass",
@@ -541,8 +541,8 @@ export function FarmMap({
         h: 20,
         x: 18,
         y: 15,
-        total: allocation.greens.total,
-        user: allocation.greens.user,
+        total: production.greens.total,
+        user: production.greens.user,
       }),
       ...crops({
         type: "vegetables",
@@ -550,8 +550,8 @@ export function FarmMap({
         h: 20,
         x: 29,
         y: 15,
-        total: allocation.vegetables.total,
-        user: allocation.vegetables.user,
+        total: production.vegetables.total,
+        user: production.vegetables.user,
       }),
       /*{
         tile: "darkerGrass",
@@ -566,8 +566,8 @@ export function FarmMap({
         h: 12,
         x: 19,
         y: 2,
-        total: allocation.fruit.total,
-        user: allocation.fruit.user,
+        total: production.fruit.total,
+        user: production.fruit.user,
       },
     ],
   };

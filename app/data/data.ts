@@ -1,7 +1,7 @@
 import type { BasketType } from "~/lib/types";
 
 const data = {
-  allocations: {
+  productions: {
     total: {
       milk: 10,
       eggs: 52,

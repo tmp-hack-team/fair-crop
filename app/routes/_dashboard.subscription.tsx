@@ -480,8 +480,8 @@ function EditSubscription({
   subscription: Subscription;
   onChange: (sub: Subscription | null) => void;
 }) {
-  const mergedAllocation = mergeMapData(
-    data.allocations.total,
+  const mergedProduction = mergeMapData(
+    data.productions.total,
     subscription.baskets
   );
 
@@ -491,7 +491,7 @@ function EditSubscription({
         className={cn("overflow-auto shrink-0 flex flex-col w-full gap-y-4")}
       >
         <TypographyH2>Your Subscription</TypographyH2>
-        <FarmMapLegend allocation={mergedAllocation} withTitle={false} />
+        <FarmMapLegend production={mergedProduction} withTitle={false} />
 
         <div>
           <Dialog>

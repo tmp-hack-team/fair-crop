@@ -1,70 +1,12 @@
 import type { Route } from "./+types/_dashboard.subscription";
 import { Page } from "~/components/page";
-import {
-  BASKET_TYPES,
-  type BasketSubscription,
-  type BasketType,
-  type Subscription,
-} from "~/lib/types";
-import { TypographyH2 } from "~/components/ui/typography";
-import { Button } from "~/components/ui/button";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "~/components/ui/select";
-import {
-  useCallback,
-  useEffect,
-  useRef,
-  useState,
-  type ReactNode,
-} from "react";
-import data from "~/data/data";
-import { DataCard } from "~/components/ui/info";
+import { useEffect, useRef, type ReactNode } from "react";
+
 import { cn } from "~/lib/utils";
 import { useFetcher } from "react-router";
 import type { action } from "./api.subscribe-bot";
 import { Spinner } from "components/ui/shadcn-io/spinner";
 import { Input } from "~/components/ui/input";
-import z from "zod";
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-import {
-  Form,
-  FormControl,
-  FormDescription,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
-} from "~/components/ui/form";
-import {
-  Dialog,
-  DialogClose,
-  DialogContent,
-  DialogDescription,
-  DialogFooter,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
-} from "~/components/ui/dialog";
-import { IconAI } from "~/components/ui/icon";
-import { SuggestMealDialog } from "~/components/ai/suggest-meal";
-import {
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow,
-} from "~/components/ui/table";
-import products from "~/data/products";
-import { FarmMapLegend } from "~/components/farm-map/farm-map-legend";
-import { mergeMapData } from "~/components/farm-map/util";
-
 export async function loader({ context }: Route.LoaderArgs) {
   return {};
 }

@@ -21,13 +21,13 @@ export default function () {
     }
   }, []);
 
-  const mergedAllocation = mergeMapData(
-    data.allocations.total,
+  const mergedProduction = mergeMapData(
+    data.productions.total,
     subscription ? subscription.baskets : {}
   );
 
   return (
-    <Page title="Current Allocation">
+    <Page title="Current Production">
       <div className={cn("overflow-auto shrink-0 flex flex-col w-min")}>
         <InfoCard className={cn("mx-1 mb-4")}>
           <p>
@@ -45,11 +45,11 @@ export default function () {
           <p>The remaining resources are currently unalocated.</p>
         </InfoCard>
 
-        <FarmMap allocation={mergedAllocation} />
+        <FarmMap production={mergedProduction} />
 
         <FarmMapLegend
           className={cn("px-1 mt-4 w-full mb-4")}
-          allocation={mergedAllocation}
+          production={mergedProduction}
         />
       </div>
     </Page>
